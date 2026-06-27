@@ -14,32 +14,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class WalletItem extends Item {
-
-//    public WalletItem(Properties properties, int size) {
-//        super(properties.component(
-//                ModDataComponents.WALLET_CONTENTS,
-//                new WalletContents(NonNullList.createWithCapacity(size))
-//        ));
-//    }
-
     public WalletItem(Properties properties) {
         super(properties);
     }
 
-//    @Override
-//    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand useHand){
-//        if (!level.isClientSide) {
-//            ItemStack useItem = player.getItemInHand(useHand);
-//            player.openMenu(new ItemBoundContainer<>(9, useItem, ModDataComponents.WALLET_CONTENTS, WalletContents::new));
-//            return InteractionResultHolder.success(useItem);
-//        }
-//        return super.use(level, player, useHand);
-//    }
-
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
         if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
@@ -54,7 +37,7 @@ public class WalletItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, java.util.List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, java.util.@NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
 
         WalletContents contents = stack.get(ModDataComponents.WALLET_CONTENTS.get());
@@ -72,7 +55,7 @@ public class WalletItem extends Item {
             }
         }
 
-        tooltip.add(Component.literal("Монет: " + coins));
-        tooltip.add(Component.literal("Карт: " + cards));
+        tooltip.add(Component.translatable("text.coinsmod.wallet.coins", coins));
+        tooltip.add(Component.translatable("text.coinsmod.wallet.cards", cards));
     }
 }

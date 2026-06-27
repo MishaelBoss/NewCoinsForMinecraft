@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class WalletMenu extends AbstractContainerMenu {
     private final Container walletContainer;
@@ -41,7 +42,7 @@ public class WalletMenu extends AbstractContainerMenu {
             int col = i % 3;
             this.addSlot(new Slot(walletContainer, i, startX + col * 18, startY + row * 18) {
                 @Override
-                public boolean mayPlace(ItemStack stack) {
+                public boolean mayPlace(@NotNull ItemStack stack) {
                     return stack.is(ModItems.COPPER_COIN.get())
                             || stack.is(ModItems.IRON_COIN.get())
                             || stack.is(ModItems.GOLD_COIN.get())
@@ -56,7 +57,7 @@ public class WalletMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public void removed(Player player) {
+    public void removed(@NotNull Player player) {
         super.removed(player);
 
         NonNullList<ItemStack> items = NonNullList.withSize(9, ItemStack.EMPTY);
@@ -67,12 +68,12 @@ public class WalletMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NotNull Player player) {
         return true;
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int index) {
+    public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
         return ItemStack.EMPTY;
     }
 

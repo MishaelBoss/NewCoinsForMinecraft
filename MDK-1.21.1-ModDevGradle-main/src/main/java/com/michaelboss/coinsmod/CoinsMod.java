@@ -36,11 +36,10 @@ public class CoinsMod {
         ModMenus.register(modEventBus);
         ModDataComponents.register(modEventBus);
         modEventBus.addListener(ClientModEvents::registerScreens);
-//        ModDataComponents.REGISTRY.register(modEventBus);
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
-        ModCreativeModeTabs.CREATIVE_MODE_TABS.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
 

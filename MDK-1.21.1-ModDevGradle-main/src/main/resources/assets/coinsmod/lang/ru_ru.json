@@ -8,6 +8,9 @@
   "item.coinsmod.card_gold": "Золотая Карта",
   "item.coinsmod.wallet": "Кошелек",
 
+  "text.coinsmod.wallet.coins": "Монет: %s",
+  "text.coinsmod.wallet.cards": "Карт: %s",
+
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
