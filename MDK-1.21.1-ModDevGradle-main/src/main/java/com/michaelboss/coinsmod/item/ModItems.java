@@ -38,7 +38,7 @@ public class ModItems {
 
     // Coinage - чеканка монет
     public static final DeferredItem<BlockItem> COINAGE_BLOCK_ITEM =
-            ITEMS.registerSimpleBlockItem("coinage_block", ModBlocks.COINAGE_BLOCk);
+            ITEMS.registerSimpleBlockItem("coinage_block", ModBlocks.COINAGE_BLOCK);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

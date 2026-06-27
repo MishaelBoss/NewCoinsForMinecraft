@@ -19,7 +19,7 @@ public class ModBlocks {
             BLOCKS.register("atm_bottom_block",
                     () -> new ATMBottomBlock(BlockBehaviour.Properties.of().strength(4.0F, 5.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
-    public static final DeferredBlock<Block> COINAGE_BLOCk =
+    public static final DeferredBlock<Block> COINAGE_BLOCK =
             BLOCKS.register("coinage_block",
                     () -> new CoinageBlock(BlockBehaviour.Properties.of().strength(4.0F, 5.0F).requiresCorrectToolForDrops()));
 

@@ -2,6 +2,7 @@ package com.michaelboss.coinsmod;
 
 import com.michaelboss.coinsmod.block.ModBlocks;
 import com.michaelboss.coinsmod.client.ClientModEvents;
+import com.michaelboss.coinsmod.init.ModBlockEntities;
 import com.michaelboss.coinsmod.item.ModCreativeModeTabs;
 import com.michaelboss.coinsmod.item.ModItems;
 import com.michaelboss.coinsmod.menu.ModMenus;
@@ -36,6 +37,7 @@ public class CoinsMod {
         ModMenus.register(modEventBus);
         ModDataComponents.register(modEventBus);
         modEventBus.addListener(ClientModEvents::registerScreens);
+        ModBlockEntities.register(modEventBus);
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);

@@ -74,7 +74,38 @@ public class WalletMenu extends AbstractContainerMenu {
 
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
-        return ItemStack.EMPTY;
+        Slot slot = this.slots.get(index);
+
+        if (!slot.hasItem()) return ItemStack.EMPTY;
+
+        ItemStack stack = slot.getItem();
+        ItemStack copy = stack.copy();
+
+        if (index < 9) {
+            if (!this.moveItemStackTo(stack, 9, slots.size(), true)) {
+                return ItemStack.EMPTY;
+            }
+        } else {
+            if (stack.is(ModItems.COPPER_COIN.get())
+                    || stack.is(ModItems.IRON_COIN.get())
+                    || stack.is(ModItems.GOLD_COIN.get())
+                    || stack.is(ModItems.CARD_CLASSIC.get())
+                    || stack.is(ModItems.GOLD_CLASSIC.get())) {
+                if (!this.moveItemStackTo(stack, 0, 9, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else {
+                return ItemStack.EMPTY;
+            }
+        }
+
+        if (stack.isEmpty()) {
+            slot.set(ItemStack.EMPTY);
+        } else {
+            slot.setChanged();
+        }
+
+        return copy;
     }
 
     private void addPlayerInventory(Inventory inv) {
