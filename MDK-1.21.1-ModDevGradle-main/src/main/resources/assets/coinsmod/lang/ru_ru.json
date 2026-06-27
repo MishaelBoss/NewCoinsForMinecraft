@@ -1,0 +1,18 @@
+{
+  "itemGroup.examplemod": "Coins Mod Tab",
+  "item.coinsmod.copper_coin": "Медная Монета",
+  "item.coinsmod.gold_coin": "Золотая Монета",
+  "item.coinsmod.iron_coin": "Железная Монета",
+  "block.coinsmod.atm_bottom_block": "Банкомат",
+  "item.coinsmod.card_classic":  "Классическая Карта",
+  "item.coinsmod.card_gold": "Золотая Карта",
+  "item.coinsmod.wallet": "Кошелек",
+
+  "examplemod.configuration.title": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
+  "examplemod.configuration.items": "Item List",
+  "examplemod.configuration.logDirtBlock": "Log Dirt Block",
+  "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
+  "examplemod.configuration.magicNumber": "Magic Number"
+}

@@ -1,0 +1,18 @@
+{
+  "itemGroup.examplemod": "Coins Mod Tab",
+  "item.coinsmod.copper_coin": "Copper Coin",
+  "item.coinsmod.gold_coin": "Gold Coin",
+  "item.coinsmod.iron_coin": "Iron coin",
+  "block.coinsmod.atm_bottom_block": "ATM",
+  "item.coinsmod.card_classic":  "Classic Card",
+  "item.coinsmod.card_gold": "Gold Card",
+  "item.coinsmod.wallet": "Wallet",
+
+  "examplemod.configuration.title": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
+  "examplemod.configuration.items": "Item List",
+  "examplemod.configuration.logDirtBlock": "Log Dirt Block",
+  "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
+  "examplemod.configuration.magicNumber": "Magic Number"
+}

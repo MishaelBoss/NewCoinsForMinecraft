@@ -1,0 +1,24 @@
+package com.michaelboss.coinsmod.block;
+
+import com.michaelboss.coinsmod.CoinsMod;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+public class ModBlocks {
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(CoinsMod.MOD_ID);
+
+    public static final DeferredBlock<Block> ATM_TOP_BLOCK =
+            BLOCKS.register("atm_top_block",
+                    () -> new ATMTopBlock(BlockBehaviour.Properties.of().strength(3.5f).requiresCorrectToolForDrops()));
+
+    public static final DeferredBlock<Block> ATM_BOTTOM_BLOCK =
+            BLOCKS.register("atm_bottom_block",
+                    () -> new ATMBottomBlock(BlockBehaviour.Properties.of().strength(3.5f).requiresCorrectToolForDrops()));
+
+    public static void register(IEventBus eventBus) {
+        BLOCKS.register(eventBus);
+    }
+}

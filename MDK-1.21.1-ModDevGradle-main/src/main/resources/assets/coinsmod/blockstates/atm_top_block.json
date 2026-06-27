@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "coinsmod:block/atm_top_block" },
+    "facing=east": { "model": "coinsmod:block/atm_top_block", "y": 90 },
+    "facing=south": { "model": "coinsmod:block/atm_top_block", "y": 180 },
+    "facing=west": { "model": "coinsmod:block/atm_top_block", "y": 270 }
+  }
+}
