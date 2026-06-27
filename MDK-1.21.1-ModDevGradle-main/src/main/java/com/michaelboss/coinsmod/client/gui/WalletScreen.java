@@ -1,4 +1,4 @@
-package com.michaelboss.coinsmod.client.screen;
+package com.michaelboss.coinsmod.client.gui;
 
 import com.michaelboss.coinsmod.menu.WalletMenu;
 import net.minecraft.client.gui.GuiGraphics;

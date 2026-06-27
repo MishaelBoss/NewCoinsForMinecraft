@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "coinsmod:atm_top_block",
+    "coinsmod:atm_bottom_block"
+  ]
+}

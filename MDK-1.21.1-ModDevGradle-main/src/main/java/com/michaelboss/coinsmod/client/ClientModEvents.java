@@ -1,6 +1,6 @@
 package com.michaelboss.coinsmod.client;
 
-import com.michaelboss.coinsmod.client.screen.WalletScreen;
+import com.michaelboss.coinsmod.client.gui.WalletScreen;
 import com.michaelboss.coinsmod.menu.ModMenus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
