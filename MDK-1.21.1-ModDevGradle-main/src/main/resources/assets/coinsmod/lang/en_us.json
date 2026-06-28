@@ -11,6 +11,7 @@
 
   "text.coinsmod.wallet.coins": "Coins: %s",
   "text.coinsmod.wallet.cards": "Cards: %s",
+
   "text.coinsmod.menu.coinage": "Сoinage",
 
   "tooltip.coinsmod.coin.hold_shift": "Hold Shift to see map details",
