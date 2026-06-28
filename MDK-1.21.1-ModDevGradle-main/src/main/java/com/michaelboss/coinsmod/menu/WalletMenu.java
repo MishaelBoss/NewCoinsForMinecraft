@@ -1,7 +1,6 @@
 package com.michaelboss.coinsmod.menu;
 
 import com.michaelboss.coinsmod.item.ModItems;
-
 import com.michaelboss.coinsmod.item.component.WalletContents;
 import com.michaelboss.coinsmod.registry.ModDataComponents;
 import net.minecraft.core.NonNullList;
@@ -12,11 +11,22 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.entity.item.ItemEntity;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 public class WalletMenu extends AbstractContainerMenu {
     private final Container walletContainer;
     private final ItemStack walletStack;
+
+    private boolean isAcceptedPayment(ItemStack stack) {
+        return stack.is(ModItems.COPPER_COIN.get())
+                || stack.is(ModItems.IRON_COIN.get())
+                || stack.is(ModItems.GOLD_COIN.get())
+                || stack.is(ModItems.CLASSIC_CARD.get())
+                || stack.is(ModItems.GOLD_CARD.get());
+    }
 
     public WalletMenu(int id, Inventory playerInventory) {
         this(id, playerInventory, playerInventory.player.getMainHandItem());
@@ -43,11 +53,7 @@ public class WalletMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(walletContainer, i, startX + col * 18, startY + row * 18) {
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
-                    return stack.is(ModItems.COPPER_COIN.get())
-                            || stack.is(ModItems.IRON_COIN.get())
-                            || stack.is(ModItems.GOLD_COIN.get())
-                            || stack.is(ModItems.CARD_CLASSIC.get())
-                            || stack.is(ModItems.GOLD_CLASSIC.get());
+                    return isAcceptedPayment(stack);
                 }
             });
         }
@@ -56,6 +62,7 @@ public class WalletMenu extends AbstractContainerMenu {
         addPlayerHotbar(playerInventory);
     }
 
+    @SuppressWarnings("resource")
     @Override
     public void removed(@NotNull Player player) {
         super.removed(player);
@@ -64,12 +71,40 @@ public class WalletMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; i++) {
             items.set(i, walletContainer.getItem(i).copy());
         }
-        walletStack.set(ModDataComponents.WALLET_CONTENTS.get(), new WalletContents(items));
+        WalletContents newContents = new WalletContents(items);
+
+        ItemStack currentHandItem = player.getMainHandItem();
+        if (!currentHandItem.isEmpty() && currentHandItem.is(ModItems.WALLET.get())) {
+            currentHandItem.set(ModDataComponents.WALLET_CONTENTS.get(), newContents);
+            return;
+        }
+
+        for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+            ItemStack stack = player.getInventory().getItem(i);
+            if (!stack.isEmpty() && stack.is(ModItems.WALLET.get())) {
+                stack.set(ModDataComponents.WALLET_CONTENTS.get(), newContents);
+                return;
+            }
+        }
+
+        if (!player.level().isClientSide) {
+            AABB searchArea = player.getBoundingBox().inflate(4.0);
+            List<ItemEntity> droppedItems = player.level().getEntitiesOfClass(ItemEntity.class, searchArea);
+
+            for (ItemEntity itemEntity : droppedItems) {
+                ItemStack stack = itemEntity.getItem();
+                if (!stack.isEmpty() && stack.is(ModItems.WALLET.get())) {
+                    stack.set(ModDataComponents.WALLET_CONTENTS.get(), newContents);
+                    itemEntity.setItem(stack);
+                    break;
+                }
+            }
+        }
     }
 
     @Override
     public boolean stillValid(@NotNull Player player) {
-        return true;
+        return !this.walletStack.isEmpty() && player.getMainHandItem() == this.walletStack;
     }
 
     @Override
@@ -86,11 +121,7 @@ public class WalletMenu extends AbstractContainerMenu {
                 return ItemStack.EMPTY;
             }
         } else {
-            if (stack.is(ModItems.COPPER_COIN.get())
-                    || stack.is(ModItems.IRON_COIN.get())
-                    || stack.is(ModItems.GOLD_COIN.get())
-                    || stack.is(ModItems.CARD_CLASSIC.get())
-                    || stack.is(ModItems.GOLD_CLASSIC.get())) {
+            if (isAcceptedPayment(stack)) {
                 if (!this.moveItemStackTo(stack, 0, 9, false)) {
                     return ItemStack.EMPTY;
                 }

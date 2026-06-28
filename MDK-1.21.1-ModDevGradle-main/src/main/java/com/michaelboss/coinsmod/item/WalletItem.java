@@ -49,7 +49,7 @@ public class WalletItem extends Item {
                 if (item.isEmpty()) continue;
                 if (item.is(ModItems.COPPER_COIN.get()) || item.is(ModItems.IRON_COIN.get()) || item.is(ModItems.GOLD_COIN.get())) {
                     coins += item.getCount();
-                } else if (item.is(ModItems.CARD_CLASSIC.get()) || item.is(ModItems.GOLD_CLASSIC.get())) {
+                } else if (item.is(ModItems.CLASSIC_CARD.get()) || item.is(ModItems.GOLD_CARD.get())) {
                     cards += item.getCount();
                 }
             }

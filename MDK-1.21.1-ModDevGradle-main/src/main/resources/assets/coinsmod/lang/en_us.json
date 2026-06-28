@@ -4,14 +4,19 @@
   "item.coinsmod.gold_coin": "Gold Coin",
   "item.coinsmod.iron_coin": "Iron coin",
   "block.coinsmod.atm_bottom_block": "ATM",
-  "item.coinsmod.card_classic":  "Classic Card",
-  "item.coinsmod.card_gold": "Gold Card",
+  "item.coinsmod.classic_card":  "Classic Card",
+  "item.coinsmod.gold_card": "Gold Card",
   "item.coinsmod.wallet": "Wallet",
   "block.coinsmod.coinage_block": "Сoinage",
 
   "text.coinsmod.wallet.coins": "Coins: %s",
   "text.coinsmod.wallet.cards": "Cards: %s",
   "text.coinsmod.menu.coinage": "Сoinage",
+
+  "tooltip.coinsmod.coin.hold_shift": "Hold Shift to see map details",
+  "tooltip.coinsmod.coin.details":  "Will be added in future versions",
+  "tooltip.coinsmod.card.hold_shift": "Hold Shift to see map details",
+  "tooltip.coinsmod.card.details": "Card: stores your coins.",
 
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",

@@ -4,14 +4,20 @@
   "item.coinsmod.gold_coin": "Золотая Монета",
   "item.coinsmod.iron_coin": "Железная Монета",
   "block.coinsmod.atm_bottom_block": "Банкомат",
-  "item.coinsmod.card_classic":  "Классическая Карта",
-  "item.coinsmod.card_gold": "Золотая Карта",
+  "item.coinsmod.classic_card":  "Классическая Карта",
+  "item.coinsmod.gold_card": "Золотая Карта",
   "item.coinsmod.wallet": "Кошелек",
   "block.coinsmod.coinage_block": "Чеканка Монет",
 
   "text.coinsmod.wallet.coins": "Монет: %s",
   "text.coinsmod.wallet.cards": "Карт: %s",
+
   "text.coinsmod.menu.coinage": "Чеканка Монет",
+
+  "tooltip.coinsmod.coin.hold_shift": "Зажмите Shift, чтобы увидеть детали карты",
+  "tooltip.coinsmod.coin.details":  "Будет добавлено в будущих версиях",
+  "tooltip.coinsmod.card.hold_shift": "Зажмите Shift, чтобы увидеть детали карты",
+  "tooltip.coinsmod.card.details": "Карта: хранит ваши монеты.",
 
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",

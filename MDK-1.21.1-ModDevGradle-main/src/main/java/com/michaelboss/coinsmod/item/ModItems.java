@@ -17,20 +17,20 @@ public class ModItems {
 
     // Coins - Монеты
     public static final DeferredItem<Item> COPPER_COIN = ITEMS.register("copper_coin",
-            () -> new Item(new Item.Properties()));
+            () -> new CopperCoinItem(new Item.Properties()));
 
     public static final DeferredItem<Item> GOLD_COIN = ITEMS.register("gold_coin",
-            () -> new Item(new Item.Properties()));
+            () -> new GoldCoinItem(new Item.Properties()));
 
     public static final DeferredItem<Item> IRON_COIN = ITEMS.register("iron_coin",
-            () -> new Item(new Item.Properties()));
+            () -> new IronCoinItem(new Item.Properties()));
 
     // Cards - Карты
-    public static final DeferredItem<Item> CARD_CLASSIC = ITEMS.register("card_classic",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> CLASSIC_CARD = ITEMS.register("card_classic",
+            () -> new ClassicCardItem(new Item.Properties().stacksTo(1)));
 
-    public static final DeferredItem<Item> GOLD_CLASSIC = ITEMS.register("card_gold",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> GOLD_CARD = ITEMS.register("card_gold",
+            () -> new GoldCardItem(new Item.Properties().stacksTo(1)));
 
     // Wallet - Кошелек
     public static final DeferredItem<Item> WALLET = ITEMS.register("wallet",
