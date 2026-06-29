@@ -3,6 +3,7 @@
   "values": [
     "coinsmod:atm_top_block",
     "coinsmod:atm_bottom_block",
-    "coinsmod:coinage_block"
+    "coinsmod:coinage_block",
+    "coinsmod:bank_card_printing_machine_block"
   ]
 }

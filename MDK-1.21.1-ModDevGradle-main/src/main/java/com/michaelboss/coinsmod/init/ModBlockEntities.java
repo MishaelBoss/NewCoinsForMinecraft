@@ -2,6 +2,7 @@ package com.michaelboss.coinsmod.init;
 
 import com.michaelboss.coinsmod.CoinsMod;
 import com.michaelboss.coinsmod.block.ModBlocks;
+import com.michaelboss.coinsmod.block.entity.BankCardPrintingMachineBlockEntity;
 import com.michaelboss.coinsmod.block.entity.CoinageBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -14,8 +15,12 @@ public class ModBlockEntities {
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, CoinsMod.MOD_ID);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CoinageBlockEntity>> COINAGE_BLOCK_ENTITY =
-            BLOCK_ENTITIES.register("coinage_block", () ->
-                    BlockEntityType.Builder.of(CoinageBlockEntity::new, ModBlocks.COINAGE_BLOCK.get()).build(null));
+            BLOCK_ENTITIES.register("coinage_block",
+                    () -> BlockEntityType.Builder.of(CoinageBlockEntity::new, ModBlocks.COINAGE_BLOCK.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BankCardPrintingMachineBlockEntity>> BANK_CARD_PPINTING_MACHINE_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("bank_card_printing_machine_block",
+                    () -> BlockEntityType.Builder.of(BankCardPrintingMachineBlockEntity::new, ModBlocks.BANK_CARD_PRINTING_MACHINE_BLOCK.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

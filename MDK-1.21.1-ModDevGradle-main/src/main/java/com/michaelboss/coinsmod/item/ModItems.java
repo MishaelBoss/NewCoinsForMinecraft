@@ -25,6 +25,10 @@ public class ModItems {
     public static final DeferredItem<Item> IRON_COIN = ITEMS.register("iron_coin",
             () -> new IronCoinItem(new Item.Properties()));
 
+    // Chip - чип
+    public static final DeferredItem<Item> CHIP = ITEMS.register("chip",
+            () -> new Item(new Item.Properties()));
+
     // Cards - Карты
     public static final DeferredItem<Item> CLASSIC_CARD = ITEMS.register("card_classic",
             () -> new ClassicCardItem(new Item.Properties().stacksTo(1)));
@@ -39,6 +43,10 @@ public class ModItems {
     // Coinage - чеканка монет
     public static final DeferredItem<BlockItem> COINAGE_BLOCK_ITEM =
             ITEMS.registerSimpleBlockItem("coinage_block", ModBlocks.COINAGE_BLOCK);
+
+    // Bank сard printing machine - станок для создания банковских карт
+    public static final DeferredItem<BlockItem> BANK_CARD_PRINTING_MACHINE_BLOCK_ITEM =
+            ITEMS.registerSimpleBlockItem("bank_card_printing_machine_block", ModBlocks.BANK_CARD_PRINTING_MACHINE_BLOCK);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

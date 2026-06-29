@@ -41,8 +41,6 @@ public class CoinageBlockEntity extends BlockEntity implements MenuProvider, Con
     private int progress = 0;
     private int maxProgress = 40;
 
-    private boolean HAMMERING = false;
-
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private static final RawAnimation HAMMER_ANIM = RawAnimation.begin().thenLoop("hammer");
 
@@ -165,7 +163,7 @@ public class CoinageBlockEntity extends BlockEntity implements MenuProvider, Con
 
     @Override
     public @NotNull Component getDisplayName() {
-        return Component.translatable("text.coinsmod.menu.coinage");
+        return Component.translatable("title.coinsmod.menu.coinage");
     }
 
     @Override

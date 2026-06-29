@@ -1,6 +1,7 @@
 package com.michaelboss.coinsmod.menu;
 
-import com.michaelboss.coinsmod.block.entity.CoinageBlockEntity;
+import com.michaelboss.coinsmod.block.entity.BankCardPrintingMachineBlockEntity;
+import com.michaelboss.coinsmod.item.ModItems;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -12,22 +13,31 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
-public class CoinageMenu extends AbstractContainerMenu {
-    private final CoinageBlockEntity blockEntity;
+public class BankCardPrintingMachineMenu extends AbstractContainerMenu {
+    private final BankCardPrintingMachineBlockEntity blockEntity;
     private final ContainerData data;
     private final ContainerLevelAccess access;
 
-    public CoinageMenu(int id, Inventory inventory, CoinageBlockEntity blockEntity) {
+    private boolean isAcceptedSlot0(ItemStack stack) {
+        return stack.is(Items.IRON_INGOT)
+                || stack.is(Items.GOLD_INGOT);
+    }
+
+    private boolean isAcceptedSlot1(ItemStack stack) {
+        return stack.is(ModItems.CHIP.get());
+    }
+
+    public BankCardPrintingMachineMenu(int id, Inventory inventory, BankCardPrintingMachineBlockEntity blockEntity) {
         this(id, inventory, blockEntity, blockEntity.getContainerData());
     }
 
     @SuppressWarnings("resource")
-    public CoinageMenu(int id, Inventory inventory, FriendlyByteBuf buf) {
-        this(id, inventory, (CoinageBlockEntity) inventory.player.level().getBlockEntity(buf.readBlockPos()));
+    public BankCardPrintingMachineMenu(int id, Inventory inventory, FriendlyByteBuf buf) {
+        this(id, inventory, (BankCardPrintingMachineBlockEntity) inventory.player.level().getBlockEntity(buf.readBlockPos()));
     }
 
-    public CoinageMenu(int id, Inventory inventory, CoinageBlockEntity blockEntity, ContainerData data) {
-        super(ModMenus.COINAGE_MENU.get(), id);
+    protected BankCardPrintingMachineMenu(int id, Inventory inventory, BankCardPrintingMachineBlockEntity blockEntity, ContainerData data) {
+        super(ModMenus.BANK_CARD_PRINTING_MACHINE_MENU.get(), id);
         this.blockEntity = blockEntity;
         this.data = data;
         assert blockEntity.getLevel() != null;
@@ -35,19 +45,27 @@ public class CoinageMenu extends AbstractContainerMenu {
 
         this.addDataSlots(data);
 
-        this.addSlot(new Slot(blockEntity, 0, 56, 21) {
+        this.addSlot(new Slot(blockEntity, 0, 31, 34) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
-                return stack.is(Items.IRON_INGOT) || stack.is(Items.GOLD_INGOT) || stack.is(Items.COPPER_INGOT);
+                return isAcceptedSlot0(stack);
             }
         });
 
-        this.addSlot(new Slot(blockEntity, 1, 116, 21) {
+        this.addSlot(new Slot(blockEntity, 1, 56, 34) {
+            @Override
+            public boolean mayPlace(@NotNull ItemStack stack) {
+                return isAcceptedSlot1(stack);
+            }
+        });
+
+        this.addSlot(new Slot(blockEntity, 2, 116, 34) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return false;
             }
         });
+
 
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
@@ -56,24 +74,15 @@ public class CoinageMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory inventory) {
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
-                this.addSlot(new Slot(inventory, col + row * 9 + 9, 8 + col * 18, 56 + row * 18));
+                this.addSlot(new Slot(inventory, col + row * 9 + 9, 8 + col * 18, 69 + row * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory inventory) {
         for (int col = 0; col < 9; col++) {
-            this.addSlot(new Slot(inventory, col, 8 + col * 18, 114));
+            this.addSlot(new Slot(inventory, col, 8 + col * 18, 127));
         }
-    }
-
-    public ContainerData getData() {
-        return this.data;
-    }
-
-    @Override
-    public boolean stillValid(@NotNull Player player) {
-        return stillValid(this.access, player, this.blockEntity.getBlockState().getBlock());
     }
 
     @Override
@@ -85,13 +94,17 @@ public class CoinageMenu extends AbstractContainerMenu {
         ItemStack stack = slot.getItem();
         ItemStack copy = stack.copy();
 
-        if (index < 2) {
+        if (index < 3) {
             if (!this.moveItemStackTo(stack, 2, slots.size(), true)) {
                 return ItemStack.EMPTY;
             }
         } else {
             if (stack.is(Items.IRON_INGOT) || stack.is(Items.GOLD_INGOT) || stack.is(Items.COPPER_INGOT)) {
                 if (!this.moveItemStackTo(stack, 0, 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (stack.is(ModItems.CHIP)) {
+                if (!this.moveItemStackTo(stack, 1, 2, false)) {
                     return ItemStack.EMPTY;
                 }
             } else {
@@ -106,5 +119,14 @@ public class CoinageMenu extends AbstractContainerMenu {
         }
 
         return copy;
+    }
+
+    @Override
+    public boolean stillValid(@NotNull Player player) {
+        return stillValid(this.access, player, this.blockEntity.getBlockState().getBlock());
+    }
+
+    public ContainerData getData() {
+        return this.data;
     }
 }

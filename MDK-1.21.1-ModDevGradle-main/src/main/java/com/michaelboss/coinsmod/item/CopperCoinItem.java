@@ -20,7 +20,7 @@ public class CopperCoinItem extends Item {
         if (Screen.hasShiftDown()) {
             tooltipComponents.add(Component.translatable("tooltip.coinsmod.coin.details"));
         } else {
-            tooltipComponents.add(Component.translatable("tooltip.coinsmod.coin.hold_shift"));
+            tooltipComponents.add(Component.translatable("tooltip.coinsmod.hold_shift"));
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);

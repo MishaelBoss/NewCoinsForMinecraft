@@ -1,23 +1,36 @@
 {
+  "============ ITEM GROUP ===================": "=====================",
+
   "itemGroup.examplemod": "Coins Mod Tab",
+
+  "============ ITEM NAMES ===================": "=====================",
+
   "item.coinsmod.copper_coin": "Медная Монета",
   "item.coinsmod.gold_coin": "Золотая Монета",
   "item.coinsmod.iron_coin": "Железная Монета",
-  "block.coinsmod.atm_bottom_block": "Банкомат",
+  "item.coinsmod.chip": "Чип",
   "item.coinsmod.classic_card":  "Классическая Карта",
   "item.coinsmod.gold_card": "Золотая Карта",
   "item.coinsmod.wallet": "Кошелек",
-  "block.coinsmod.coinage_block": "Чеканка Монет",
 
+  "============ BLOCK NAMES ===================": "=====================",
+
+  "block.coinsmod.atm_bottom_block": "Банкомат",
+  "block.coinsmod.coinage_block": "Чеканка Монет",
+  "block.coinsmod.bank_card_printing_machine_block": "Принтер Банковских Карт",
+
+  "============ GUI ===================": "=====================",
+
+  "title.coinsmod.menu.coinage": "Чеканка Монет",
+  "title.coinsmod.menu.bank_card_printing_machine": "Принтер для создания карт",
+
+  "============ DESCRIPTIONS ===================": "=====================",
+
+  "tooltip.coinsmod.hold_shift": "§8§oУдерживайте SHIFT для подробностей",
+  "tooltip.coinsmod.card.details": "Карта: хранит ваши монеты.",
+  "tooltip.coinsmod.coin.details":  "Будет добавлено в будущих версиях",
   "text.coinsmod.wallet.coins": "Монет: %s",
   "text.coinsmod.wallet.cards": "Карт: %s",
-
-  "text.coinsmod.menu.coinage": "Чеканка Монет",
-
-  "tooltip.coinsmod.coin.hold_shift": "Зажмите Shift, чтобы увидеть детали карты",
-  "tooltip.coinsmod.coin.details":  "Будет добавлено в будущих версиях",
-  "tooltip.coinsmod.card.hold_shift": "Зажмите Shift, чтобы увидеть детали карты",
-  "tooltip.coinsmod.card.details": "Карта: хранит ваши монеты.",
 
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
