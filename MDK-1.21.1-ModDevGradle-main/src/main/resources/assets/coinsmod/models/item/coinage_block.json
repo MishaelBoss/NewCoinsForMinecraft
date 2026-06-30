@@ -1,3 +1,6 @@
 {
-  "parent": "coinsmod:block/coinage_block"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "coinsmod:item/coinage"
+  }
 }
