@@ -33,6 +33,11 @@ public class CardItem extends Item {
         return super.getName(stack);
     }
 
+    public static Integer getDeposit(ItemStack stack) {
+        int cardDeposit = stack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
+        return Math.round(cardDeposit / 10.0F);
+    }
+
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
         String ownerUUID = stack.get(ModDataComponents.CARD_UUID.get());
@@ -44,8 +49,8 @@ public class CardItem extends Item {
                         .append(": ")
                         .append(Component.literal(ownerUUID).withStyle(ChatFormatting.GRAY)));
 
-                Integer cardDeposit = stack.get(ModDataComponents.CARD_DEPOSIT.get());
-                float singleValue = cardDeposit / 10.0F;
+                int cardDeposit = stack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
+                int singleValue = Math.round(cardDeposit / 10.0F);
 
                 tooltipComponents.add(Component.translatable("tooltip.coinsmod.card.deposit", singleValue));
             } else {

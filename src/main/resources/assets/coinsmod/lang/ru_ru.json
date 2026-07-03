@@ -33,7 +33,7 @@
 
   "tooltip.coinsmod.hold_shift": "§8§oУдерживайте SHIFT для подробностей",
   "tooltip.coinsmod.card.id": "ID Владельца",
-  "tooltip.coinsmod.card.deposit": "Депозит",
+  "tooltip.coinsmod.card.deposit": "§7Депозит: §2%s",
   "tooltip.coinsmod.card.no_biometrics": "Биометрические данные отсутствуют",
   "tooltip.coinsmod.coin.details":  "§7Ценность: §2%s",
   "tooltip.coinsmod.coin.total_details":  "§7Общая ценность стака: §2%s",

@@ -1,6 +1,7 @@
 package com.michaelboss.coinsmod.client.gui;
 
 import com.michaelboss.coinsmod.CoinsMod;
+import com.michaelboss.coinsmod.item.CardItem;
 import com.michaelboss.coinsmod.menu.ATMMenu;
 import com.michaelboss.coinsmod.registry.ModDataComponents;
 import net.minecraft.client.gui.GuiGraphics;
@@ -185,14 +186,11 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
             String ownerName = cardStack.has(ModDataComponents.CARD_OWNER.get()) ?
                     cardStack.get(ModDataComponents.CARD_OWNER.get()) : "Unknown";
 
-            int rawBalance = cardStack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
-            float currentBalance = rawBalance / 10.0F;
-
             assert ownerName != null;
             Component welcomeText = Component.translatable("text.coinsmod.atm_screen.welcome_client", ownerName);
             guiGraphics.drawString(this.font, welcomeText, leftPos + 18, topPos + 25, 0xFFFFFFFF, false);
 
-            Component balanceText = Component.translatable("text.coinsmod.atm_screen.balance", currentBalance);
+            Component balanceText = Component.translatable("text.coinsmod.atm_screen.balance", CardItem.getDeposit(cardStack));
             guiGraphics.drawString(this.font, balanceText, leftPos + 18, topPos + 35, 0xFF00F5D4, false);
         }
     }
@@ -201,9 +199,6 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
         ItemStack cardStack = this.menu.getSlot(6).getItem();
 
         if (this.isFullyBooted) {
-            int rawBalance = cardStack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
-            float currentBalance = rawBalance / 10.0F;
-
             int rawPendingCoins = 0;
             for (int slotIdx = 0; slotIdx <= 5; slotIdx++) {
                 ItemStack slotStack = this.menu.getSlot(slotIdx).getItem();
@@ -211,9 +206,9 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
                     rawPendingCoins += (coinItem.getInternalValue() * slotStack.getCount());
                 }
             }
-            float pendingCoinsDisplay = rawPendingCoins / 10.0F;
+            int pendingCoinsDisplay = rawPendingCoins;
 
-            float togetherCoinsDisplay = pendingCoinsDisplay + currentBalance;
+            int togetherCoinsDisplay = rawPendingCoins + CardItem.getDeposit(cardStack);
 
             Component enrollmentText = Component.translatable("text.coinsmod.atm_screen.enrollment", pendingCoinsDisplay);
             guiGraphics.drawString(this.font, enrollmentText, leftPos + 18, topPos + 25, 0xFF00F5D4, false);
@@ -227,16 +222,13 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
         ItemStack cardStack = this.menu.getSlot(6).getItem();
 
         if (this.isFullyBooted) {
-            int rawBalance = cardStack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
-            float currentBalance = rawBalance / 10.0F;
-
             guiGraphics.pose().pushPose();
             guiGraphics.pose().scale(0.5F, 0.5F, 1.0F);
 
             int smallTextY = (int)((topPos + 25) / 0.5F);
             int balanceTextX = (int)((leftPos + 50) / 0.5F);
 
-            Component balanceText = Component.translatable("text.coinsmod.atm_screen.balance", currentBalance);
+            Component balanceText = Component.translatable("text.coinsmod.atm_screen.balance", CardItem.getDeposit(cardStack));
             guiGraphics.drawString(this.font, balanceText, balanceTextX, smallTextY, 0xFF00F5D4, false);
 
             guiGraphics.pose().popPose();
