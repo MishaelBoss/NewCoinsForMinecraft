@@ -1,5 +1,6 @@
 package com.michaelboss.coinsmod.menu;
 
+import com.michaelboss.coinsmod.item.WalletItem;
 import com.michaelboss.coinsmod.registry.ModItems;
 import com.michaelboss.coinsmod.registry.ModMenus;
 import com.michaelboss.coinsmod.item.component.WalletContents;
@@ -36,7 +37,7 @@ public class WalletMenu extends AbstractContainerMenu {
         this.walletStack = walletStack;
         this.walletContainer = new SimpleContainer(9);
 
-        WalletContents contents = walletStack.get(ModDataComponents.WALLET_CONTENTS.get());
+        WalletContents contents = WalletItem.getContents(walletStack);
         if (contents != null) {
             for (int i = 0; i < Math.min(contents.getContent().size(), 9); i++) {
                 walletContainer.setItem(i, contents.getContent().get(i));
@@ -74,14 +75,14 @@ public class WalletMenu extends AbstractContainerMenu {
 
         ItemStack currentHandItem = player.getMainHandItem();
         if (!currentHandItem.isEmpty() && currentHandItem.is(ModItems.WALLET.get())) {
-            currentHandItem.set(ModDataComponents.WALLET_CONTENTS.get(), newContents);
+            WalletItem.setContents(currentHandItem, newContents);
             return;
         }
 
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
             ItemStack stack = player.getInventory().getItem(i);
             if (!stack.isEmpty() && stack.is(ModItems.WALLET.get())) {
-                stack.set(ModDataComponents.WALLET_CONTENTS.get(), newContents);
+                WalletItem.setContents(stack, newContents);
                 return;
             }
         }
@@ -93,7 +94,7 @@ public class WalletMenu extends AbstractContainerMenu {
             for (ItemEntity itemEntity : droppedItems) {
                 ItemStack stack = itemEntity.getItem();
                 if (!stack.isEmpty() && stack.is(ModItems.WALLET.get())) {
-                    stack.set(ModDataComponents.WALLET_CONTENTS.get(), newContents);
+                    WalletItem.setContents(stack, newContents);
                     itemEntity.setItem(stack);
                     break;
                 }

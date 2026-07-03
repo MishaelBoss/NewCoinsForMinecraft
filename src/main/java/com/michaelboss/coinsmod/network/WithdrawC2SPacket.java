@@ -1,6 +1,7 @@
 package com.michaelboss.coinsmod.network;
 
 import com.michaelboss.coinsmod.blockentity.ATMBlockEntity;
+import com.michaelboss.coinsmod.item.CardItem;
 import com.michaelboss.coinsmod.registry.ModItems;
 import com.michaelboss.coinsmod.menu.ATMMenu;
 import com.michaelboss.coinsmod.registry.ModDataComponents;
@@ -38,8 +39,7 @@ public record WithdrawC2SPacket(int value) implements CustomPacketPayload {
                     int requestedAmount = payload.value() * 10;
                     if (requestedAmount <= 0) return;
 
-                    int currentBalance = cardStack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
-                    if (currentBalance < requestedAmount) {
+                    if (CardItem.getDeposit(cardStack) < requestedAmount) {
                         player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("text.coinsmod.withdraw_c2s.insufficient_funds"));
                         return;
                     }
@@ -69,10 +69,7 @@ public record WithdrawC2SPacket(int value) implements CustomPacketPayload {
                     }
 
                     if (remainingToGive > 0) {
-                        goldCoinsToGive = 0;
-                        ironCoinsToGive = 0;
                         copperCoinsToGive = requestedAmount / 10;
-                        remainingToGive = 0;
                     }
 
                     int requiredSlots = 0;
@@ -96,8 +93,8 @@ public record WithdrawC2SPacket(int value) implements CustomPacketPayload {
                     splitAndPlaceInSlots(be, ModItems.IRON_COIN.get(), ironCoinsToGive);
                     splitAndPlaceInSlots(be, ModItems.COPPER_COIN.get(), copperCoinsToGive);
 
-                    int newBalance = currentBalance - requestedAmount;
-                    cardStack.set(ModDataComponents.CARD_DEPOSIT.get(), newBalance);
+                    int newBalance = CardItem.getDeposit(cardStack) - requestedAmount;
+                    CardItem.setDeposit(cardStack, newBalance);
 
                     be.setChanged();
                     player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("text.coinsmod.withdraw_c2s.successfully_removed", payload.value()));

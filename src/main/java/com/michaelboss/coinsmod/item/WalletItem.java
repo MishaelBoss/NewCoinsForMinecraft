@@ -22,6 +22,14 @@ public class WalletItem extends Item {
         super(properties);
     }
 
+    public static WalletContents getContents(ItemStack stack) {
+        return stack.get(ModDataComponents.WALLET_CONTENTS.get());
+    }
+
+    public static void setContents(ItemStack stack, WalletContents contents) {
+        stack.set(ModDataComponents.WALLET_CONTENTS.get(), contents);
+    }
+
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, @NotNull InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
@@ -41,7 +49,8 @@ public class WalletItem extends Item {
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, java.util.@NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
 
-        WalletContents contents = stack.get(ModDataComponents.WALLET_CONTENTS.get());
+        WalletContents contents = getContents(stack);
+
         int coins = 0;
         int cards = 0;
 

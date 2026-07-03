@@ -1,9 +1,9 @@
 package com.michaelboss.coinsmod.blockentity;
 
 import com.michaelboss.coinsmod.block.ATMBottomBlock;
+import com.michaelboss.coinsmod.item.CardItem;
 import com.michaelboss.coinsmod.registry.ModBlockEntities;
 import com.michaelboss.coinsmod.menu.ATMMenu;
-import com.michaelboss.coinsmod.registry.ModDataComponents;
 import com.michaelboss.coinsmod.tag.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -74,8 +74,8 @@ public class ATMBlockEntity extends BlockEntity implements MenuProvider, Contain
         boolean hasCard = card.is(ModTags.Items.ATM_CARDS);
 
         boolean isCardValid = hasCard
-                && card.has(ModDataComponents.CARD_OWNER.get())
-                && card.has(ModDataComponents.CARD_UUID.get());
+                && card.has(CardItem.getOwnerComponent())
+                && card.has(CardItem.getUuidComponent());
 
         if (state.hasProperty(ATMBottomBlock.HAS_CARD) && state.getValue(ATMBottomBlock.HAS_CARD) != hasCard) {
             level.setBlock(pos, state.setValue(ATMBottomBlock.HAS_CARD, hasCard), 3);

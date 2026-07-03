@@ -3,6 +3,7 @@ package com.michaelboss.coinsmod.item;
 import com.michaelboss.coinsmod.registry.ModDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -10,6 +11,7 @@ import net.minecraft.world.item.TooltipFlag;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CardItem extends Item {
     public CardItem(Properties properties) {
@@ -20,9 +22,38 @@ public class CardItem extends Item {
         return new CardItem(new Item.Properties().stacksTo(1));
     }
 
+    public static DataComponentType<String> getOwnerComponent() {
+        return ModDataComponents.CARD_OWNER.get();
+    }
+
+    public static String getOwnerName(ItemStack stack) {
+        return stack.getOrDefault(ModDataComponents.CARD_OWNER, "Unknown");
+    }
+
+    public static void setOwner(ItemStack stack, String value) {
+        stack.set(ModDataComponents.CARD_OWNER.get(), value);
+    }
+
+    public static DataComponentType<String> getUuidComponent() {
+        return ModDataComponents.CARD_UUID.get();
+    }
+
+    public static void setUUID(ItemStack stack, UUID value) {
+        stack.set(ModDataComponents.CARD_UUID.get(), value.toString());
+    }
+
+    public static int getDeposit(ItemStack stack) {
+        int cardDeposit = stack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
+        return Math.round(cardDeposit / 10.0F);
+    }
+
+    public static void setDeposit(ItemStack stack, int value) {
+        stack.set(ModDataComponents.CARD_DEPOSIT.get(), value);
+    }
+
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        String ownerName = stack.get(ModDataComponents.CARD_OWNER.get());
+        String ownerName = stack.get(getOwnerComponent());
 
         if (ownerName != null && !ownerName.isEmpty()) {
             return Component.translatable(this.getDescriptionId(stack))
@@ -33,15 +64,9 @@ public class CardItem extends Item {
         return super.getName(stack);
     }
 
-    public static Integer getDeposit(ItemStack stack) {
-        int cardDeposit = stack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
-        return Math.round(cardDeposit / 10.0F);
-    }
-
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
-        String ownerUUID = stack.get(ModDataComponents.CARD_UUID.get());
-
+        String ownerUUID = stack.get(getUuidComponent());
 
         if (Screen.hasShiftDown()) {
             if (ownerUUID != null && !ownerUUID.isEmpty()) {
@@ -49,10 +74,7 @@ public class CardItem extends Item {
                         .append(": ")
                         .append(Component.literal(ownerUUID).withStyle(ChatFormatting.GRAY)));
 
-                int cardDeposit = stack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
-                int singleValue = Math.round(cardDeposit / 10.0F);
-
-                tooltipComponents.add(Component.translatable("tooltip.coinsmod.card.deposit", singleValue));
+                tooltipComponents.add(Component.translatable("tooltip.coinsmod.card.deposit", getDeposit(stack)));
             } else {
                 tooltipComponents.add(Component.translatable("tooltip.coinsmod.card.no_biometrics").withStyle(ChatFormatting.RED));
             }

@@ -1,6 +1,7 @@
 package com.michaelboss.coinsmod.network;
 
 import com.michaelboss.coinsmod.blockentity.ATMBlockEntity;
+import com.michaelboss.coinsmod.item.CardItem;
 import com.michaelboss.coinsmod.item.CoinItem;
 import com.michaelboss.coinsmod.menu.ATMMenu;
 import com.michaelboss.coinsmod.registry.ModDataComponents;
@@ -44,10 +45,8 @@ public record DepositC2SPacket() implements CustomPacketPayload {
 
                     if (totalCollected <= 0) return;
 
-                    int currentBalance = cardStack.getOrDefault(ModDataComponents.CARD_DEPOSIT.get(), 0);
-                    int newBalance = currentBalance + totalCollected;
-
-                    cardStack.set(ModDataComponents.CARD_DEPOSIT.get(), newBalance);
+                    int newBalance = CardItem.getDeposit(cardStack) + totalCollected;
+                    CardItem.setDeposit(cardStack, newBalance);
 
                     for (int slot = 0; slot <= 5; slot++) {
                         be.setItem(slot, ItemStack.EMPTY);

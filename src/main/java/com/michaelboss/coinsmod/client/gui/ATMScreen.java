@@ -182,15 +182,14 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
     private void renderMainPage(GuiGraphics guiGraphics) {
         ItemStack cardStack = this.menu.getSlot(6).getItem();
 
-        if (this.isFullyBooted) {
-            String ownerName = cardStack.has(ModDataComponents.CARD_OWNER.get()) ?
-                    cardStack.get(ModDataComponents.CARD_OWNER.get()) : "Unknown";
+        if (this.isFullyBooted && cardStack.has(CardItem.getOwnerComponent())) {
+            String ownerName = CardItem.getOwnerName(cardStack);
+            int deposit = CardItem.getDeposit(cardStack);
 
-            assert ownerName != null;
             Component welcomeText = Component.translatable("text.coinsmod.atm_screen.welcome_client", ownerName);
             guiGraphics.drawString(this.font, welcomeText, leftPos + 18, topPos + 25, 0xFFFFFFFF, false);
 
-            Component balanceText = Component.translatable("text.coinsmod.atm_screen.balance", CardItem.getDeposit(cardStack));
+            Component balanceText = Component.translatable("text.coinsmod.atm_screen.balance", deposit);
             guiGraphics.drawString(this.font, balanceText, leftPos + 18, topPos + 35, 0xFF00F5D4, false);
         }
     }
@@ -222,13 +221,15 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
         ItemStack cardStack = this.menu.getSlot(6).getItem();
 
         if (this.isFullyBooted) {
+            int deposit = CardItem.getDeposit(cardStack);
+
             guiGraphics.pose().pushPose();
             guiGraphics.pose().scale(0.5F, 0.5F, 1.0F);
 
             int smallTextY = (int)((topPos + 25) / 0.5F);
             int balanceTextX = (int)((leftPos + 50) / 0.5F);
 
-            Component balanceText = Component.translatable("text.coinsmod.atm_screen.balance", CardItem.getDeposit(cardStack));
+            Component balanceText = Component.translatable("text.coinsmod.atm_screen.balance", deposit);
             guiGraphics.drawString(this.font, balanceText, balanceTextX, smallTextY, 0xFF00F5D4, false);
 
             guiGraphics.pose().popPose();

@@ -1,6 +1,7 @@
 package com.michaelboss.coinsmod.blockentity;
 
 import com.michaelboss.coinsmod.block.BankCardPrintingMachineBlock;
+import com.michaelboss.coinsmod.item.CardItem;
 import com.michaelboss.coinsmod.registry.ModBlockEntities;
 import com.michaelboss.coinsmod.registry.ModItems;
 import com.michaelboss.coinsmod.menu.BankCardPrintingMachineMenu;
@@ -90,13 +91,13 @@ public class BankCardPrintingMachineBlockEntity extends BlockEntity implements M
                     ItemStack result = be.createResult(ingot);
 
                     if(!result.isEmpty()){
-                        result.set(ModDataComponents.CARD_OWNER.get(), be.printingPlayerName);
+                        CardItem.setOwner(result, be.printingPlayerName);
 
                         if (be.printingPlayerUUID != null) {
-                            result.set(ModDataComponents.CARD_UUID.get(), be.printingPlayerUUID.toString());
+                            CardItem.setUUID(result, be.printingPlayerUUID);
                         }
 
-                        result.set(ModDataComponents.CARD_DEPOSIT.get(), 0);
+                        CardItem.setDeposit(result, 0);
 
                         be.setItem(2, result);
                     }
