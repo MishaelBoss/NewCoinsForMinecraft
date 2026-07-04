@@ -29,6 +29,11 @@
   "text.coinsmod.atm_screen.deposit_btn": "ВНЕСТИ",
   "text.coinsmod.atm_screen.withdraw_btn": "СНЯТЬ",
 
+  "============ JEI ===================": "=====================",
+
+  "jei.coinage": "Чеканка Монет",
+  "jei.bank_card_printing_machine": "Принтер для создания карт",
+
   "============ DESCRIPTIONS ===================": "=====================",
 
   "tooltip.coinsmod.hold_shift": "§8§oУдерживайте SHIFT для подробностей",

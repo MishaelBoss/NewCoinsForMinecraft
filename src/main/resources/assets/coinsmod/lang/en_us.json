@@ -29,6 +29,11 @@
   "text.coinsmod.atm_screen.deposit_btn": "CONTRIBUTE",
   "text.coinsmod.atm_screen.withdraw_btn": "TAKE OFF",
 
+  "============ JEI ===================": "=====================",
+
+  "jei.coinage": "Coinage",
+  "jei.bank_card_printing_machine": "Printer for creating cards",
+
   "============ DESCRIPTIONS ===================": "=====================",
 
   "tooltip.coinsmod.hold_shift": "§8§oHold Shift to see map details",
