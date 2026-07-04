@@ -1,8 +1,9 @@
 package com.michaelboss.coinsmod.registry;
 
 import com.michaelboss.coinsmod.CoinsMod;
+import com.michaelboss.coinsmod.Config;
 import com.michaelboss.coinsmod.item.CardItem;
-import com.michaelboss.coinsmod.item.CoinItem;
+import com.michaelboss.coinsmod.item.CurrencyItem;
 import com.michaelboss.coinsmod.item.WalletItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -11,6 +12,11 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModItems {
+    private ModItems() {
+        /* This utility class should not be instantiated */
+        throw new IllegalStateException("Utility class");
+    }
+
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(CoinsMod.MOD_ID);
 
     // ATM - Банкомат
@@ -19,13 +25,13 @@ public class ModItems {
 
     // Coins - Монеты
     public static final DeferredItem<Item> COPPER_COIN = ITEMS.register("copper_coin",
-            () -> new CoinItem(new Item.Properties(), 1.0F));
+            () -> new CurrencyItem(new Item.Properties(), Config.COPPER_COIN_INTERNAL_COIN_VALUE));
 
     public static final DeferredItem<Item> GOLD_COIN = ITEMS.register("gold_coin",
-            () -> new CoinItem(new Item.Properties(), 2.3F));
+            () -> new CurrencyItem(new Item.Properties(), Config.GOLD_COIN_INTERNAL_COIN_VALUE));
 
     public static final DeferredItem<Item> IRON_COIN = ITEMS.register("iron_coin",
-            () -> new CoinItem(new Item.Properties(), 1.5F));
+            () -> new CurrencyItem(new Item.Properties(), Config.IRON_COIN_INTERNAL_COIN_VALUE));
 
     // Chip - чип
     public static final DeferredItem<Item> CHIP = ITEMS.register("chip",
