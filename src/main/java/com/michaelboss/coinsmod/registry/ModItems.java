@@ -50,11 +50,11 @@ public class ModItems {
 
     // Coinage - чеканка монет
     public static final DeferredItem<BlockItem> COINAGE_BLOCK_ITEM =
-            ITEMS.registerSimpleBlockItem("coinage_block", ModBlocks.COINAGE_BLOCK);
+            ITEMS.registerSimpleBlockItem("coinage_block", ModBlocks.COINAGE_BLOCK, new Item.Properties().stacksTo(1));
 
     // Bank card printing machine - станок для создания банковских карт
     public static final DeferredItem<BlockItem> BANK_CARD_PRINTING_MACHINE_BLOCK_ITEM =
-            ITEMS.registerSimpleBlockItem("bank_card_printing_machine_block", ModBlocks.BANK_CARD_PRINTING_MACHINE_BLOCK);
+            ITEMS.registerSimpleBlockItem("bank_card_printing_machine_block", ModBlocks.BANK_CARD_PRINTING_MACHINE_BLOCK, new Item.Properties().stacksTo(1));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
