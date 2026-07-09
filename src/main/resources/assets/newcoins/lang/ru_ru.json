@@ -1,0 +1,69 @@
+{
+  "============ ITEM GROUP ===================": "=====================",
+
+  "itemGroup.examplemod": "New Coins Tab",
+
+  "============ ITEM NAMES ===================": "=====================",
+
+  "item.newcoins.copper_coin": "Медная Монета",
+  "item.newcoins.gold_coin": "Золотая Монета",
+  "item.newcoins.iron_coin": "Железная Монета",
+  "item.newcoins.chip": "Чип",
+  "item.newcoins.classic_card":  "Классическая Карта",
+  "item.newcoins.gold_card": "Золотая Карта",
+  "item.newcoins.wallet": "Кошелек",
+
+  "============ BLOCK NAMES ===================": "=====================",
+
+  "block.newcoins.atm_bottom_block": "Банкомат",
+  "block.newcoins.coinage_block": "Чеканка Монет",
+  "block.newcoins.bank_card_printing_machine_block": "Принтер Банковских Карт",
+
+  "============ GUI ===================": "=====================",
+
+  "title.newcoins.menu.coinage": "Чеканка Монет",
+  "title.newcoins.menu.coinage.ownerName": "Пользователь",
+  "title.newcoins.menu.bank_card_printing_machine": "Принтер для создания карт",
+  "title.newcoins.menu.atm": "Банкомат",
+  "text.newcoins.atm_screen.amount_editBox": "Сумма",
+  "text.newcoins.atm_screen.deposit_btn": "ВНЕСТИ",
+  "text.newcoins.atm_screen.withdraw_btn": "СНЯТЬ",
+
+  "============ JEI ===================": "=====================",
+
+  "jei.coinage": "Чеканка Монет",
+  "jei.bank_card_printing_machine": "Принтер для создания карт",
+
+  "============ DESCRIPTIONS ===================": "=====================",
+
+  "tooltip.newcoins.hold_shift": "§8§oУдерживайте SHIFT для подробностей",
+  "tooltip.newcoins.card.id": "ID Владельца",
+  "tooltip.newcoins.card.deposit": "§7Депозит: §2%s",
+  "tooltip.newcoins.card.no_biometrics": "Биометрические данные отсутствуют",
+  "tooltip.newcoins.coin.details":  "§7Ценность: §2%s",
+  "tooltip.newcoins.coin.total_details":  "§7Общая ценность стака: §2%s",
+  "text.newcoins.wallet.coins": "Монет: %s",
+  "text.newcoins.wallet.cards": "Карт: %s",
+  "text.newcoins.atm_screen.insert_card": "[ ВСТАВЬТЕ КАРТУ ]",
+  "text.newcoins.atm_screen.load": "ЗАГРУЗКА ИНТЕРФЕЙСА...",
+  "text.newcoins.atm_screen.error_dio": "ОШИБКА БИОМЕТРИИ",
+  "text.newcoins.atm_screen.chip_not_coded": "ЧИП НЕ ЗАКОДИРОВАН",
+  "text.newcoins.atm_screen.welcome_client": "КЛИЕНТ: %s",
+  "text.newcoins.atm_screen.balance": "БАЛАНС: %s *",
+  "text.newcoins.atm_screen.enrollment": "ЗАЧИСЛЕНИЕ: %s *",
+  "text.newcoins.atm_screen.together": "ВМЕСТЕ: %s *",
+
+  "============ MESSAGE ===================": "=====================",
+
+  "text.newcoins.withdraw_c2s.insufficient_funds": "§cНедостаточно средств на карте!",
+  "text.newcoins.withdraw_c2s.not_enough_slots": "§cВ банкомате недостаточно свободных слотов для выдачи!",
+  "text.newcoins.withdraw_c2s.successfully_removed": "§aУспешно снято: %s ед.",
+
+  "examplemod.configuration.title": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
+  "examplemod.configuration.items": "Item List",
+  "examplemod.configuration.logDirtBlock": "Log Dirt Block",
+  "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
+  "examplemod.configuration.magicNumber": "Magic Number"
+}

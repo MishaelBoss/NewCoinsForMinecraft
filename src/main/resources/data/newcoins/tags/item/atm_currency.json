@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "newcoins:copper_coin",
+    "newcoins:gold_coin",
+    "newcoins:iron_coin"
+  ]
+}

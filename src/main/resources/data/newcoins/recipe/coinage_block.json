@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "p": {
+      "item": "minecraft:piston"
+    },
+    "s": {
+      "item": "minecraft:smooth_stone"
+    }
+  },
+  "pattern": [
+    "ipi",
+    "i i",
+    "sss"
+  ],
+  "result": {
+    "count": 1,
+    "id": "newcoins:coinage_block"
+  }
+}

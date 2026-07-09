@@ -1,0 +1,62 @@
+package com.michaelboss.newcoins.registry;
+
+import com.michaelboss.newcoins.NewCoins;
+import com.michaelboss.newcoins.Config;
+import com.michaelboss.newcoins.item.CardItem;
+import com.michaelboss.newcoins.item.CurrencyItem;
+import com.michaelboss.newcoins.item.WalletItem;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+public class ModItems {
+    private ModItems() {
+        /* This utility class should not be instantiated */
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(NewCoins.MOD_ID);
+
+    // ATM - Банкомат
+    public static final DeferredItem<BlockItem> ATM_ITEM =
+            ITEMS.registerSimpleBlockItem("atm", ModBlocks.ATM_BOTTOM_BLOCK);
+
+    // Coins - Монеты
+    public static final DeferredItem<Item> COPPER_COIN = ITEMS.register("copper_coin",
+            () -> new CurrencyItem(new Item.Properties(), Config.COPPER_COIN_INTERNAL_COIN_VALUE));
+
+    public static final DeferredItem<Item> GOLD_COIN = ITEMS.register("gold_coin",
+            () -> new CurrencyItem(new Item.Properties(), Config.GOLD_COIN_INTERNAL_COIN_VALUE));
+
+    public static final DeferredItem<Item> IRON_COIN = ITEMS.register("iron_coin",
+            () -> new CurrencyItem(new Item.Properties(), Config.IRON_COIN_INTERNAL_COIN_VALUE));
+
+    // Chip - чип
+    public static final DeferredItem<Item> CHIP = ITEMS.register("chip",
+            () -> new Item(new Item.Properties()));
+
+    // Cards - Карты
+    public static final DeferredItem<Item> CLASSIC_CARD = ITEMS.register("classic_card",
+            CardItem::create);
+
+    public static final DeferredItem<Item> GOLD_CARD = ITEMS.register("gold_card",
+            CardItem::create);
+
+    // Wallet - Кошелек
+    public static final DeferredItem<Item> WALLET = ITEMS.register("wallet",
+            () -> new WalletItem(new Item.Properties().stacksTo(1)));
+
+    // Coinage - чеканка монет
+    public static final DeferredItem<BlockItem> COINAGE_BLOCK_ITEM =
+            ITEMS.registerSimpleBlockItem("coinage_block", ModBlocks.COINAGE_BLOCK, new Item.Properties().stacksTo(1));
+
+    // Bank card printing machine - станок для создания банковских карт
+    public static final DeferredItem<BlockItem> BANK_CARD_PRINTING_MACHINE_BLOCK_ITEM =
+            ITEMS.registerSimpleBlockItem("bank_card_printing_machine_block", ModBlocks.BANK_CARD_PRINTING_MACHINE_BLOCK, new Item.Properties().stacksTo(1));
+
+    public static void register(IEventBus eventBus) {
+        ITEMS.register(eventBus);
+    }
+}

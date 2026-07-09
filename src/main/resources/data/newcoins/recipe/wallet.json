@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": {
+      "item": "minecraft:string"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    " s ",
+    "lll"
+  ],
+  "result": {
+    "count": 1,
+    "id": "newcoins:wallet"
+  }
+}

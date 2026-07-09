@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "newcoins:block/coinage_block" },
+    "facing=east": { "model": "newcoins:block/coinage_block", "y": 90 },
+    "facing=south": { "model": "newcoins:block/coinage_block", "y": 180 },
+    "facing=west": { "model": "newcoins:block/coinage_block", "y": 270 }
+  }
+}

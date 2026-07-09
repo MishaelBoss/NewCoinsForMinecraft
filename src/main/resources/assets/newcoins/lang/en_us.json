@@ -1,0 +1,69 @@
+{
+  "============ ITEM GROUP ===================": "=====================",
+
+  "itemGroup.examplemod": "New Coins Tab",
+
+  "============ ITEM NAMES ===================": "=====================",
+
+  "item.newcoins.copper_coin": "Copper Coin",
+  "item.newcoins.gold_coin": "Gold Coin",
+  "item.newcoins.iron_coin": "Iron coin",
+  "item.newcoins.chip": "Chip",
+  "item.newcoins.classic_card":  "Classic Card",
+  "item.newcoins.gold_card": "Gold Card",
+  "item.newcoins.wallet": "Wallet",
+
+  "============ BLOCK NAMES ===================": "=====================",
+
+  "block.newcoins.atm_bottom_block": "ATM",
+  "block.newcoins.coinage_block": "Coinage",
+  "block.newcoins.bank_card_printing_machine_block": "Bank Card Printer",
+
+  "============ GUI ===================": "=====================",
+
+  "title.newcoins.menu.coinage": "Coinage",
+  "title.newcoins.menu.coinage.ownerName":  "User",
+  "title.newcoins.menu.bank_card_printing_machine": "Printer for creating cards",
+  "title.newcoins.menu.atm": "ATM",
+  "text.newcoins.atm_screen.amount_editBox": "Sum",
+  "text.newcoins.atm_screen.deposit_btn": "CONTRIBUTE",
+  "text.newcoins.atm_screen.withdraw_btn": "TAKE OFF",
+
+  "============ JEI ===================": "=====================",
+
+  "jei.coinage": "Coinage",
+  "jei.bank_card_printing_machine": "Printer for creating cards",
+
+  "============ DESCRIPTIONS ===================": "=====================",
+
+  "tooltip.newcoins.hold_shift": "§8§oHold Shift to see map details",
+  "tooltip.newcoins.card.id": "ID Owner",
+  "tooltip.newcoins.card.deposit": "§7Deposit: §2%s",
+  "tooltip.newcoins.card.no_biometrics": "No biometric data available",
+  "tooltip.newcoins.coin.details":  "§7Value: §2%s",
+  "tooltip.newcoins.coin.total_details":  "§7Total stack value: §2%s",
+  "text.newcoins.wallet.coins": "Coins: %s",
+  "text.newcoins.wallet.cards": "Cards: %s",
+  "text.newcoins.atm_screen.insert_card": "[ INSERT CARD ]",
+  "text.newcoins.atm_screen.load": "LOADING INTERFACE...",
+  "text.newcoins.atm_screen.error_dio": "BIOMETRICS ERROR",
+  "text.newcoins.atm_screen.chip_not_coded": "CHIP IS NOT ENCODED",
+  "text.newcoins.atm_screen.welcome_client": "CLIENT: %s",
+  "text.newcoins.atm_screen.balance": "BALANCE: %s *",
+  "text.newcoins.atm_screen.enrollment": "ENROLLMENT: %s *",
+  "text.newcoins.atm_screen.together": "TOGETHER: %s *",
+
+  "============ MESSAGE ===================": "=====================",
+
+  "text.newcoins.withdraw_c2s.insufficient_funds": "§cInsufficient funds on the card!",
+  "text.newcoins.withdraw_c2s.not_enough_slots": "§cThere are not enough free slots for cash withdrawals in the ATM!",
+  "text.newcoins.withdraw_c2s.successfully_removed": "§aSuccessfully removed: %s units.",
+
+  "examplemod.configuration.title": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
+  "examplemod.configuration.items": "Item List",
+  "examplemod.configuration.logDirtBlock": "Log Dirt Block",
+  "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
+  "examplemod.configuration.magicNumber": "Magic Number"
+}

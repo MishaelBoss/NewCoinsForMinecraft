@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "newcoins:block/bank_card_printing_machine_block" },
+    "facing=east": { "model": "newcoins:block/bank_card_printing_machine_block", "y": 90 },
+    "facing=south": { "model": "newcoins:block/bank_card_printing_machine_block", "y": 180 },
+    "facing=west": { "model": "newcoins:block/bank_card_printing_machine_block", "y": 270 }
+  }
+}

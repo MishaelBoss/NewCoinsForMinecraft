@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "r": {
+      "item": "minecraft:redstone_block"
+    },
+    "c": {
+      "item": "minecraft:comparator"
+    }
+  },
+  "pattern": [
+    "igi",
+    "ici",
+    "iri"
+  ],
+  "result": {
+    "count": 1,
+    "id": "newcoins:atm"
+  }
+}

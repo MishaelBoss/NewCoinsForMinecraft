@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "q": {
+      "item": "minecraft:quartz"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "iqi",
+    "qrq",
+    "iqi"
+  ],
+  "result": {
+    "count": 1,
+    "id": "newcoins:chip"
+  }
+}

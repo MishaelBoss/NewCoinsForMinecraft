@@ -36,7 +36,7 @@ updateJSONURL="https://raw.githubusercontent.com/MishaelBoss/ModCoinsForMinecraf
 displayURL="https://github.com/MishaelBoss" #optional
 
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="coinsmod.neoforge.logo.png" #optional
+logoFile="newcoins.neoforge.logo.png" #optional
 
 # A text field displayed in the mod UI
 #credits="" #optional
