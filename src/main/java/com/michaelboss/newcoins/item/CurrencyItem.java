@@ -1,5 +1,6 @@
 package com.michaelboss.newcoins.item;
 
+import com.michaelboss.newcoins.registry.ModDataComponents;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -11,30 +12,28 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class CurrencyItem extends Item {
-    private final Supplier<Integer> valueSupplier;
+    private final Supplier<Integer> defaultValueSupplier;
 
     public CurrencyItem(Properties properties, Supplier<Integer> valueSupplier) {
         super(properties);
-        this.valueSupplier = valueSupplier;
+        this.defaultValueSupplier = valueSupplier;
     }
 
-    public int getInternalValue() {
-        return this.valueSupplier.get();
+    public int getValue(ItemStack stack) {
+        return stack.getOrDefault(ModDataComponents.MONEY_VALUE.get(), defaultValueSupplier.get());
     }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
         if (Screen.hasShiftDown()) {
-            int internalCoinValue = getInternalValue();
+            int value = getValue(stack);
 
-            float singleValue = internalCoinValue / 10.0F;
+            float singleValue = value / 10.0F;
             tooltipComponents.add(Component.translatable("tooltip.newcoins.coin.details", singleValue));
 
             if (stack.getCount() > 1) {
-                int totalInternalValue = internalCoinValue * stack.getCount();
-                float totalValue = totalInternalValue / 10.0F;
-
-                tooltipComponents.add(Component.translatable("tooltip.newcoins.coin.total_details", totalValue));
+                float total = (value * stack.getCount()) / 10.0F;
+                tooltipComponents.add(Component.translatable("tooltip.newcoins.coin.total_details", total));
             }
         } else {
             tooltipComponents.add(Component.translatable("tooltip.newcoins.hold_shift"));

@@ -31,9 +31,9 @@ public class BankCardPrintingMachineMenu extends AbstractContainerMenu {
         super(ModMenus.BANK_CARD_PRINTING_MACHINE_MENU.get(), id);
         this.blockEntity = (BankCardPrintingMachineBlockEntity) inventory.player.level().getBlockEntity(buf.readBlockPos());
         this.data = new SimpleContainerData(2);
-        this.addDataSlots(this.data);
-
         this.access = ContainerLevelAccess.NULL;
+
+        this.addDataSlots(this.data);
 
         setupSlots(inventory);
     }

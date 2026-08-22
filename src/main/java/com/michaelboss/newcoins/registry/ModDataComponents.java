@@ -40,6 +40,12 @@ public class ModDataComponents {
                     .networkSynchronized(ByteBufCodecs.INT)
                     .build());
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> MONEY_VALUE =
+            REGISTRY.register("money_value", () -> DataComponentType.<Integer>builder()
+                    .persistent(Codec.INT)
+                    .networkSynchronized(ByteBufCodecs.INT)
+                    .build());
+
     public static void register(IEventBus eventBus) {
         REGISTRY.register(eventBus);
     }

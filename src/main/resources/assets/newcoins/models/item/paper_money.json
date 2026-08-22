@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "newcoins:item/dollar_bill"
+    "layer0": "newcoins:item/paper_money"
   }
 }

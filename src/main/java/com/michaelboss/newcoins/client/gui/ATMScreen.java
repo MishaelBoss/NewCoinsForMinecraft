@@ -203,7 +203,7 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
             for (int slotIdx = 0; slotIdx <= 5; slotIdx++) {
                 ItemStack slotStack = this.menu.getSlot(slotIdx).getItem();
                 if (!slotStack.isEmpty() && slotStack.getItem() instanceof CurrencyItem currencyItem) {
-                    rawPendingCoins += (currencyItem.getInternalValue() * slotStack.getCount());
+                    rawPendingCoins += (currencyItem.getValue(slotStack) * slotStack.getCount());
                 }
             }
             int currentCardDepositRaw = CardItem.getDeposit(cardStack);

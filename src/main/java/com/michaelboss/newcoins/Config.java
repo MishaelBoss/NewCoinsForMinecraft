@@ -24,7 +24,7 @@ public class Config {
 
     public static final ModConfigSpec.IntValue PAPER_MONEY_INTERNAL_MONEY_VALUE = BUILDER
             .comment("Intrinsic Value of Paper Money (100 = 10.0)")
-            .defineInRange("paperMoneyValue", 100, 1, Integer.MAX_VALUE);
+            .defineInRange("paperMoneyValue", 0, 0, Integer.MAX_VALUE);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 }

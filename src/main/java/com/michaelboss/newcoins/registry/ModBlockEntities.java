@@ -4,7 +4,7 @@ import com.michaelboss.newcoins.NewCoins;
 import com.michaelboss.newcoins.blockentity.ATMBlockEntity;
 import com.michaelboss.newcoins.blockentity.BankCardPrintingMachineBlockEntity;
 import com.michaelboss.newcoins.blockentity.CoinageBlockEntity;
-import com.michaelboss.newcoins.blockentity.PrinterPaperMoneyEntity;
+import com.michaelboss.newcoins.blockentity.PrinterPaperMoneyBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -36,9 +36,9 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(ATMBlockEntity::new, ModBlocks.ATM_BOTTOM_BLOCK.get()).build(null));
 
     @SuppressWarnings("ConstantConditions")
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PrinterPaperMoneyEntity>> PRINTER_PAPER_MONEY_BLOCK_ENTITY =
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PrinterPaperMoneyBlockEntity>> PRINTER_PAPER_MONEY_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("printer_paper_money_block_entity",
-                    () -> BlockEntityType.Builder.of(PrinterPaperMoneyEntity::new, ModBlocks.PRINTER_PAPER_MONEY_BLOCK.get()).build(null));
+                    () -> BlockEntityType.Builder.of(PrinterPaperMoneyBlockEntity::new, ModBlocks.PRINTER_PAPER_MONEY_BLOCK.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

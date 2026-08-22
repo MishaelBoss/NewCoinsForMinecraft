@@ -1,10 +1,7 @@
 package com.michaelboss.newcoins.registry;
 
 import com.michaelboss.newcoins.NewCoins;
-import com.michaelboss.newcoins.menu.ATMMenu;
-import com.michaelboss.newcoins.menu.BankCardPrintingMachineMenu;
-import com.michaelboss.newcoins.menu.CoinageMenu;
-import com.michaelboss.newcoins.menu.WalletMenu;
+import com.michaelboss.newcoins.menu.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
@@ -37,6 +34,10 @@ public class ModMenus {
     public static final DeferredHolder<MenuType<?>, MenuType<ATMMenu>> ATM_MENU =
             MENUS.register("atm_menu",
                     () -> IMenuTypeExtension.create(ATMMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<PrinterPaperMoneyMenu>> PRINTER_PAPER_MONEY_MENU =
+            MENUS.register("printer_paper_money_menu",
+                    () -> IMenuTypeExtension.create(PrinterPaperMoneyMenu::new));
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);

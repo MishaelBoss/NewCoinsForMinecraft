@@ -1,9 +1,6 @@
 package com.michaelboss.newcoins.client;
 
-import com.michaelboss.newcoins.client.gui.ATMScreen;
-import com.michaelboss.newcoins.client.gui.BankCardPrintingMachineScreen;
-import com.michaelboss.newcoins.client.gui.CoinageScreen;
-import com.michaelboss.newcoins.client.gui.WalletScreen;
+import com.michaelboss.newcoins.client.gui.*;
 import com.michaelboss.newcoins.client.renderer.BankCardPrintingMachineBlockRender;
 import com.michaelboss.newcoins.client.renderer.CoinageBlockRenderer;
 import com.michaelboss.newcoins.registry.ModBlockEntities;
@@ -23,6 +20,7 @@ public class ClientModEvents {
         event.register(ModMenus.COINAGE_MENU.get(), CoinageScreen::new);
         event.register(ModMenus.BANK_CARD_PRINTING_MACHINE_MENU.get(), BankCardPrintingMachineScreen::new);
         event.register(ModMenus.ATM_MENU.get(), ATMScreen::new);
+        event.register(ModMenus.PRINTER_PAPER_MONEY_MENU.get(), PrinterPaperMoneyScreen::new);
     }
 
     @SubscribeEvent

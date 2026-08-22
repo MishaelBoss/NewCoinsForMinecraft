@@ -34,7 +34,7 @@ public class ModItems {
             () -> new CurrencyItem(new Item.Properties(), Config.IRON_COIN_INTERNAL_COIN_VALUE));
 
     // Paper money - бумажные деньги
-    public static final DeferredItem<Item> PAPER_MONEY = ITEMS.register("dollar_bill",
+    public static final DeferredItem<Item> PAPER_MONEY = ITEMS.register("paper_money",
             () -> new CurrencyItem(new Item.Properties(), Config.PAPER_MONEY_INTERNAL_MONEY_VALUE));
 
     // Chip - чип

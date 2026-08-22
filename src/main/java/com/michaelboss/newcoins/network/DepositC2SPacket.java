@@ -37,7 +37,7 @@ public record DepositC2SPacket() implements CustomPacketPayload {
                 for (int slot = 0; slot <= 5; slot++) {
                     ItemStack coinStack = be.getItem(slot);
                     if (!coinStack.isEmpty() && coinStack.getItem() instanceof CurrencyItem currencyItem) {
-                        totalCollected += (currencyItem.getInternalValue() * coinStack.getCount());
+                        totalCollected += (currencyItem.getValue(cardStack) * coinStack.getCount());
                     }
                 }
 
