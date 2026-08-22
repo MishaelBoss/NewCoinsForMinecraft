@@ -51,21 +51,21 @@ public class WalletItem extends Item {
 
         WalletContents contents = getContents(stack);
 
-        int coins = 0;
+        int currencies = 0;
         int cards = 0;
 
         if (contents != null) {
             for (ItemStack item : contents.getContent()) {
                 if (item.isEmpty()) continue;
                 if (item.is(ModTags.Items.ATM_CURRENCY)) {
-                    coins += item.getCount();
+                    currencies += item.getCount();
                 } else if (item.is(ModTags.Items.ATM_CARDS)) {
                     cards += item.getCount();
                 }
             }
         }
 
-        tooltip.add(Component.translatable("text.newcoins.wallet.coins", coins));
+        tooltip.add(Component.translatable("text.newcoins.wallet.currencies", currencies));
         tooltip.add(Component.translatable("text.newcoins.wallet.cards", cards));
     }
 }
