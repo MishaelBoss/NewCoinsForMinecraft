@@ -69,7 +69,7 @@ public class PrinterPaperMoneyMenu extends AbstractContainerMenu {
             }
         });
 
-        this.addSlot(new Slot(this.blockEntity, 4, 148, 3) {
+        this.addSlot(new Slot(this.blockEntity, 4, 148, 35) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return false;

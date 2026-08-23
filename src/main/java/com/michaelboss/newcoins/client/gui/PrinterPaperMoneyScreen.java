@@ -16,7 +16,7 @@ public class PrinterPaperMoneyScreen extends AbstractContainerScreen<PrinterPape
     private static final int PROGRESS_TEXTURE_X = 176;
 
     private static final int STAGE_ONE_TEXTURE_Y = 0;
-    private static final int STAGE_TWO_TEXTURE_Y = 39;
+    private static final int STAGE_TWO_TEXTURE_Y = 28;
 
     private static final int PROGRESS_BAR_ONE_WIDTH = 47;
     private static final int PROGRESS_BAR_ONE_HEIGHT = 28;
@@ -25,7 +25,7 @@ public class PrinterPaperMoneyScreen extends AbstractContainerScreen<PrinterPape
     private static final int PROGRESS_BAR_TWO_HEIGHT = 15;
 
     private static final int STAGE_ONE_SCREEN_X = 26;
-    private static final int STAGE_ONE_SCREEN_Y = 20;
+    private static final int STAGE_ONE_SCREEN_Y = 30;
 
     private static final int STAGE_TWO_SCREEN_X = 101;
     private static final int STAGE_TWO_SCREEN_Y = 35;
