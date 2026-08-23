@@ -41,27 +41,27 @@ public class PrinterPaperMoneyMenu extends AbstractContainerMenu {
     }
 
     private void setupSlots(Inventory inventory) {
-        this.addSlot(new Slot(this.blockEntity, 0, 8, 13) {
+        this.addSlot(new Slot(this.blockEntity, 0, 8, 24) {
             @Override public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.is(Items.PAPER);
             }
         });
 
-        this.addSlot(new Slot(this.blockEntity, 1, 8, 38) {
+        this.addSlot(new Slot(this.blockEntity, 1, 8, 49) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.is(Items.GREEN_DYE);
             }
         });
 
-        this.addSlot(new Slot(this.blockEntity, 2, 79, 24) {
+        this.addSlot(new Slot(this.blockEntity, 2, 79, 35) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.is(ModItems.PAPER_MONEY);
             }
         });
 
-        this.addSlot(new Slot(this.blockEntity, 3, 113, 6) {
+        this.addSlot(new Slot(this.blockEntity, 3, 113, 17) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.is(Items.IRON_INGOT)
@@ -69,7 +69,7 @@ public class PrinterPaperMoneyMenu extends AbstractContainerMenu {
             }
         });
 
-        this.addSlot(new Slot(this.blockEntity, 4, 148, 24) {
+        this.addSlot(new Slot(this.blockEntity, 4, 148, 3) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return false;
@@ -83,19 +83,19 @@ public class PrinterPaperMoneyMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory inventory) {
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
-                this.addSlot(new Slot(inventory, col + row * 9 + 9, 8 + col * 18, 69 + row * 18));
+                this.addSlot(new Slot(inventory, col + row * 9 + 9, 8 + col * 18, 80 + row * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory inventory) {
         for (int col = 0; col < 9; col++) {
-            this.addSlot(new Slot(inventory, col, 8 + col * 18, 127));
+            this.addSlot(new Slot(inventory, col, 8 + col * 18, 138));
         }
     }
 
     @Override
-    public ItemStack quickMoveStack(@NotNull Player player, int index) {
+    public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
         ItemStack empty = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
 
@@ -111,27 +111,8 @@ public class PrinterPaperMoneyMenu extends AbstractContainerMenu {
                 return empty;
             }
         } else {
-            if (source.is(Items.PAPER)) {
-                if (!moveItemStackTo(source, 0, 1, false)) {
-                    return empty;
-                }
-            } else if (source.is(Items.GREEN_DYE)) {
-                if (!moveItemStackTo(source, 1, 2, false)) {
-                    return empty;
-                }
-            } else if (source.is(ModItems.PAPER_MONEY.get())) {
-                if (!moveItemStackTo(source, 2, 3, false)) {
-                    return empty;
-                }
-            } else if (
-                    source.is(Items.IRON_INGOT)
-                            || source.is(Items.GOLD_INGOT)
-            ) {
-                if (!moveItemStackTo(source, 3, 4, false)) {
-                    return empty;
-                }
-            } else {
-                return empty;
+            if (!moveFromInventoryToTargetSlot(source)){
+                return ItemStack.EMPTY;
             }
         }
 
@@ -143,6 +124,22 @@ public class PrinterPaperMoneyMenu extends AbstractContainerMenu {
 
         slot.onTake(player, source);
         return copy;
+    }
+
+    private boolean moveFromInventoryToTargetSlot(ItemStack source) {
+        if (source.is(Items.PAPER)) {
+            return moveItemStackTo(source, 0, 1, false);
+        }
+        if (source.is(Items.GREEN_DYE)) {
+            return moveItemStackTo(source, 1, 2, false);
+        }
+        if (source.is(ModItems.PAPER_MONEY.get())) {
+            return moveItemStackTo(source, 2, 3, false);
+        }
+        if (source.is(Items.IRON_INGOT) || source.is(Items.GOLD_INGOT)) {
+            return moveItemStackTo(source, 3, 4, false);
+        }
+        return false;
     }
 
     @Override

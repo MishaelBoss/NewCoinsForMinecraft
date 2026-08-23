@@ -278,7 +278,7 @@ public class PrinterPaperMoneyBlockEntity extends BlockEntity implements MenuPro
 
     @Override
     public @NotNull Component getDisplayName() {
-        return Component.translatable("title.newcoins.menu.bank_card_printing_machine");
+        return Component.translatable("title.newcoins.menu.printer_paper_money_block");
     }
 
     @Override

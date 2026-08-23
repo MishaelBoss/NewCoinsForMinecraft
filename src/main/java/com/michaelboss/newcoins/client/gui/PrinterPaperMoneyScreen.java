@@ -16,7 +16,7 @@ public class PrinterPaperMoneyScreen extends AbstractContainerScreen<PrinterPape
     private static final int PROGRESS_TEXTURE_X = 176;
 
     private static final int STAGE_ONE_TEXTURE_Y = 0;
-    private static final int STAGE_TWO_TEXTURE_Y = 28;
+    private static final int STAGE_TWO_TEXTURE_Y = 39;
 
     private static final int PROGRESS_BAR_ONE_WIDTH = 47;
     private static final int PROGRESS_BAR_ONE_HEIGHT = 28;
@@ -25,16 +25,16 @@ public class PrinterPaperMoneyScreen extends AbstractContainerScreen<PrinterPape
     private static final int PROGRESS_BAR_TWO_HEIGHT = 15;
 
     private static final int STAGE_ONE_SCREEN_X = 26;
-    private static final int STAGE_ONE_SCREEN_Y = 19;
+    private static final int STAGE_ONE_SCREEN_Y = 20;
 
     private static final int STAGE_TWO_SCREEN_X = 101;
-    private static final int STAGE_TWO_SCREEN_Y = 24;
+    private static final int STAGE_TWO_SCREEN_Y = 35;
 
     public PrinterPaperMoneyScreen(PrinterPaperMoneyMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
         this.imageWidth = 176;
         this.imageHeight = 166;
-        this.inventoryLabelY = this.imageHeight - 108;
+        this.inventoryLabelY = this.imageHeight - 97;
         this.inventoryLabelX = 8;
     }
 
@@ -52,9 +52,7 @@ public class PrinterPaperMoneyScreen extends AbstractContainerScreen<PrinterPape
 
         int width = getProgressWidthOne(progress, maxProgress);
 
-        if (width <= 0) {
-            return;
-        }
+        if (width <= 0) return;
 
         guiGraphics.blit(TEXTURE, this.leftPos + STAGE_ONE_SCREEN_X, this.topPos + STAGE_ONE_SCREEN_Y, PROGRESS_TEXTURE_X, STAGE_ONE_TEXTURE_Y, width, PROGRESS_BAR_ONE_HEIGHT);
     }
@@ -65,37 +63,23 @@ public class PrinterPaperMoneyScreen extends AbstractContainerScreen<PrinterPape
 
         int width = getProgressWidthTwo(progress, maxProgress);
 
-        if (width <= 0) {
-            return;
-        }
+        if (width <= 0) return;
 
-        guiGraphics.blit(
-                TEXTURE,
-                this.leftPos + STAGE_TWO_SCREEN_X,
-                this.topPos + STAGE_TWO_SCREEN_Y,
-                PROGRESS_TEXTURE_X,
-                STAGE_TWO_TEXTURE_Y,
-                width,
-                PROGRESS_BAR_TWO_HEIGHT
-        );
+        guiGraphics.blit(TEXTURE, this.leftPos + STAGE_TWO_SCREEN_X, this.topPos + STAGE_TWO_SCREEN_Y, PROGRESS_TEXTURE_X, STAGE_TWO_TEXTURE_Y, width, PROGRESS_BAR_TWO_HEIGHT);
     }
 
     private int getProgressWidthOne(int progress, int maxProgress) {
-        if (maxProgress <= 0) {
-            return 0;
-        }
+        if (maxProgress <= 0) return 0;
 
-        progress = Math.max(0, Math.min(progress, maxProgress));
+        progress = Math.clamp(progress, 0, maxProgress);
 
         return progress * PROGRESS_BAR_ONE_WIDTH / maxProgress;
     }
 
     private int getProgressWidthTwo(int progress, int maxProgress) {
-        if (maxProgress <= 0) {
-            return 0;
-        }
+        if (maxProgress <= 0) return 0;
 
-        progress = Math.max(0, Math.min(progress, maxProgress));
+        progress = Math.clamp(progress, 0, maxProgress);
 
         return progress * PROGRESS_BAR_TWO_WIDTH / maxProgress;
     }

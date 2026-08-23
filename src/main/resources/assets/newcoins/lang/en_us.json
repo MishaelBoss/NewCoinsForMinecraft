@@ -26,7 +26,8 @@
 
   "title.newcoins.menu.coinage": "Coinage",
   "title.newcoins.menu.coinage.ownerName":  "User",
-  "title.newcoins.menu.bank_card_printing_machine": "Printer for creating cards",
+  "title.newcoins.menu.bank_card_printing_machine": "Card printing press",
+  "title.newcoins.menu.printer_paper_money_block":  "Paper money printing press",
   "title.newcoins.menu.atm": "ATM",
   "text.newcoins.atm_screen.amount_editBox": "Sum",
   "text.newcoins.atm_screen.deposit_btn": "CONTRIBUTE",
@@ -35,7 +36,7 @@
   "============ JEI ===================": "=====================",
 
   "jei.coinage": "Coinage",
-  "jei.bank_card_printing_machine": "Printer for creating cards",
+  "jei.bank_card_printing_machine": "Card printing press",
 
   "============ DESCRIPTIONS ===================": "=====================",
 

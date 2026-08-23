@@ -24,7 +24,8 @@
 
   "title.newcoins.menu.coinage": "Чеканка Монет",
   "title.newcoins.menu.coinage.ownerName": "Пользователь",
-  "title.newcoins.menu.bank_card_printing_machine": "Принтер для создания карт",
+  "title.newcoins.menu.bank_card_printing_machine": "Печатный станок карт",
+  "title.newcoins.menu.printer_paper_money_block":  "Печатный станок бумажных денег",
   "title.newcoins.menu.atm": "Банкомат",
   "text.newcoins.atm_screen.amount_editBox": "Сумма",
   "text.newcoins.atm_screen.deposit_btn": "ВНЕСТИ",
