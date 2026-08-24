@@ -4,6 +4,7 @@
     "newcoins:atm_top_block",
     "newcoins:atm_bottom_block",
     "newcoins:coinage_block",
-    "newcoins:bank_card_printing_machine_block"
+    "newcoins:bank_card_printing_machine_block",
+    "newcoins:printer_paper_money_block"
   ]
 }

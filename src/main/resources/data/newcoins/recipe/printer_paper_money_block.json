@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "p": {
+      "item": "minecraft:piston"
+    },
+    "c": {
+      "item": "minecraft:copper_ingot"
+    },
+    "h": {
+      "item": "newcoins:chip"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "d": {
+      "item": "minecraft:dropper"
+    }
+  },
+  "pattern": [
+    "ipi",
+    "chc",
+    "rdr"
+  ],
+  "result": {
+    "count": 1,
+    "id": "newcoins:printer_paper_money_block"
+  }
+}
