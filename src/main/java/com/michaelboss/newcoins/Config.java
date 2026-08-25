@@ -23,7 +23,7 @@ public class Config {
             .defineInRange("ironCoinValue", 15, 1, Integer.MAX_VALUE);
 
     public static final ModConfigSpec.IntValue PAPER_MONEY_INTERNAL_MONEY_VALUE = BUILDER
-            .comment("Intrinsic Value of Paper Money (100 = 10.0)")
+            .comment("Intrinsic Value of Paper Money (0 = 0.0)")
             .defineInRange("paperMoneyValue", 0, 0, Integer.MAX_VALUE);
 
     static final ModConfigSpec SPEC = BUILDER.build();

@@ -25,18 +25,22 @@ public class CurrencyItem extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
-        if (Screen.hasShiftDown()) {
-            int value = getValue(stack);
+        int value = getValue(stack);
 
-            float singleValue = value / 10.0F;
-            tooltipComponents.add(Component.translatable("tooltip.newcoins.coin.details", singleValue));
+        if (value > 0) {
+            if (Screen.hasShiftDown()) {
+                float singleValue = value / 10.0F;
+                tooltipComponents.add(Component.translatable("tooltip.newcoins.coin.details", singleValue));
 
-            if (stack.getCount() > 1) {
-                float total = (value * stack.getCount()) / 10.0F;
-                tooltipComponents.add(Component.translatable("tooltip.newcoins.coin.total_details", total));
+                if (stack.getCount() > 1) {
+                    float total = (value * stack.getCount()) / 10.0F;
+                    tooltipComponents.add(Component.translatable("tooltip.newcoins.coin.total_details", total));
+                }
+            } else {
+                tooltipComponents.add(Component.translatable("tooltip.newcoins.hold_shift"));
             }
         } else {
-            tooltipComponents.add(Component.translatable("tooltip.newcoins.hold_shift"));
+            tooltipComponents.add(Component.translatable("tooltip.newcoins.currency_not_value"));
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);

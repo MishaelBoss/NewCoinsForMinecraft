@@ -44,6 +44,7 @@
   "tooltip.newcoins.card.no_biometrics": "Биометрические данные отсутствуют",
   "tooltip.newcoins.coin.details":  "§7Ценность: §2%s",
   "tooltip.newcoins.coin.total_details":  "§7Общая ценность стака: §2%s",
+  "tooltip.newcoins.currency_not_value": "§7Пустая валюта",
   "text.newcoins.wallet.currencies": "Валют: %s",
   "text.newcoins.wallet.cards": "Карт: %s",
   "text.newcoins.atm_screen.insert_card": "[ ВСТАВЬТЕ КАРТУ ]",

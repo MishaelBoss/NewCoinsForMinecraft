@@ -46,6 +46,7 @@
   "tooltip.newcoins.card.no_biometrics": "No biometric data available",
   "tooltip.newcoins.coin.details":  "§7Value: §2%s",
   "tooltip.newcoins.coin.total_details":  "§7Total stack value: §2%s",
+  "tooltip.newcoins.currency_not_value": "§7Empty currency",
   "text.newcoins.wallet.currencies": "Currencies: %s",
   "text.newcoins.wallet.cards": "Cards: %s",
   "text.newcoins.atm_screen.insert_card": "[ INSERT CARD ]",
