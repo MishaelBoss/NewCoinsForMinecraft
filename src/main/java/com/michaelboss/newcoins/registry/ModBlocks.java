@@ -35,7 +35,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> PRINTER_PAPER_MONEY_BLOCK =
             BLOCKS.register("printer_paper_money_block",
-                    ()-> new PrinterPaperMoneyBlock(BlockBehaviour.Properties.of().strength(4.0F, 5.0F).forceSolidOn().noCollission().requiresCorrectToolForDrops()));
+                    ()-> new PrinterPaperMoneyLeftBlock(BlockBehaviour.Properties.of().strength(4.0F, 5.0F).forceSolidOn().noCollission().requiresCorrectToolForDrops()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

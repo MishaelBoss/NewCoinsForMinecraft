@@ -2,15 +2,19 @@ package com.michaelboss.newcoins.block;
 
 import com.michaelboss.newcoins.blockentity.PrinterPaperMoneyBlockEntity;
 import com.michaelboss.newcoins.registry.ModBlockEntities;
+import com.michaelboss.newcoins.registry.ModBlocks;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -27,11 +31,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class PrinterPaperMoneyBlock extends BaseEntityBlock {
+public class PrinterPaperMoneyLeftBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final MapCodec<PrinterPaperMoneyBlock> CODEC = simpleCodec(PrinterPaperMoneyBlock::new);
+    public static final MapCodec<PrinterPaperMoneyLeftBlock> CODEC = simpleCodec(PrinterPaperMoneyLeftBlock::new);
 
-    public PrinterPaperMoneyBlock(Properties properties) {
+    public PrinterPaperMoneyLeftBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH));
@@ -53,8 +57,25 @@ public class PrinterPaperMoneyBlock extends BaseEntityBlock {
     }
 
     @Override
+    public void setPlacedBy(Level level, @NotNull BlockPos pos, @NotNull BlockState state, LivingEntity placer, @NotNull ItemStack stack) {
+        if (!level.isClientSide) {
+            level.setBlock(pos.south(),
+                    ModBlocks.PRINTER_PAPER_MONEY_BLOCK.get().defaultBlockState().setValue(PrinterPaperMoneyRightBlock.FACING, state.getValue(FACING)),
+                    3);
+        }
+    }
+
+    @Override
     protected @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
         return RenderShape.MODEL;
+    }
+
+    @Override
+    public @NotNull BlockState updateShape(@NotNull BlockState state, @NotNull Direction direction, @NotNull BlockState neighborState, @NotNull LevelAccessor level, @NotNull BlockPos pos, @NotNull BlockPos neighborPos) {
+        if (direction == Direction.SOUTH && !neighborState.is(ModBlocks.PRINTER_PAPER_MONEY_BLOCK.get())) {
+            level.removeBlock(pos, false);
+        }
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     @Override
